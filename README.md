@@ -120,8 +120,11 @@ docker run -p 80:80 -p 3000:3000 -v ./log:/var/log/nginx -v ./html:/usr/share/ng
 
 Первый сервер
 
+![Снимок экрана от 2023-03-19 11-28-12](https://user-images.githubusercontent.com/114483769/226151099-04c75b0f-9e5a-43d8-974a-ed3dc2413800.png)
 
 Второй серврер
+
+![Снимок экрана от 2023-03-19 11-29-42](https://user-images.githubusercontent.com/114483769/226151110-07f7291d-21a7-4237-b0c5-4478bed73a2d.png)
 
 ## Docker-compose
 
@@ -238,8 +241,12 @@ docker-compose up
 ```
 Идем на http://127.0.0.1:8080, смотрим результат
 
+![Снимок экрана от 2023-03-19 11-31-32](https://user-images.githubusercontent.com/114483769/226151121-2dbcd4ce-cc12-464d-8ad0-b54fd2d00700.png)
 
 Смотрим сисок тем
 
+![Снимок экрана от 2023-03-19 11-33-06](https://user-images.githubusercontent.com/114483769/226151123-39b28356-10d5-4e2d-bb32-18f28e185bed.png)
 
 Устанавливаем скаченную тему
+
+![Снимок экрана от 2023-03-19 11-34-07](https://user-images.githubusercontent.com/114483769/226151126-ab52c8cb-403e-4545-95c4-a2bba6b2568a.png)
