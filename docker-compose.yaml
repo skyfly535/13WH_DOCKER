@@ -1,0 +1,43 @@
+version: "3.3"
+services:
+  # билдим Dockerfile из первой части ДЗ
+  otus:
+    build:
+      context: .
+    #  указывает на необходимость открыть порты 
+    ports:
+      - "3000:3000"
+      - "80:80"
+    # создаем точки монтирования  
+    volumes:
+      # монтируем на хост каталог логов NGINX
+      - ./log:/var/log/nginx
+      # монтируем каталог с файлом первой web-страницы (права только на чтение)
+      - ./html:/usr/share/nginx/html1:ro
+      # монтируем каталог с файлом второй web-страницы (права только на чтение)
+      - ./html1:/usr/share/nginx/html2:ro
+  # разворачиваем контейнер Redmine
+  redmine:
+    image: redmine
+    # режим запуска
+    restart: always
+    #  указывает на необходимость открыть порт
+    ports:
+      - 8080:3000
+    volumes:
+      # создаем точку монтирования (каталог на хостовой машине, где будут находится кастомные темы) 
+       - ./redmine-themes:/usr/src/redmine/public/themes
+    # объявляем переменные окружения необходимые для подключения БД
+    environment:
+      REDMINE_DB_MYSQL: db
+      REDMINE_DB_PASSWORD: example
+      REDMINE_SECRET_KEY_BASE: supersecretkey
+  # разворачиваем контейнер Mysql
+  db:
+    image: mysql:5.7
+    # режим запуска
+    restart: always
+    # объявляем переменные окружения необходимые для запуска БД
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: redmine
